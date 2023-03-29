@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Inline CSS */
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        margin: auto;
+        max-width: 500px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+      }
+
+      img.avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      /* Media query for mobile devices */
+      @media screen and (max-width: 600px) {
+        .container {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login Page</h1>
+      <div class="imgcontainer">
+        <img src="logo.png" alt="Logo" class="avatar">
+      </div>
+      <form method="post" onsubmit="return setFormAction()">
+        <label><b>Login as:</b></label><br>
+        <input type="radio" id="admin" name="user_type" value="admin" checked>
+        <label for="admin">Admin</label><br>
+        <input type="radio" id="user" name="user_type" value="user">
+        <label for="user">User</label><br>
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <script>
+      function setFormAction() {
+        var userType = document.querySelector('input[name="user_type"]:checked').value;
+        var form = document.querySelector('form');
+
+        if (userType === "admin") {
+          form.action = "admin-login.php";
+        } else if (userType === "user") {
+          form.action = "user-login.php";
+        } else {
+          alert("Please select a user type.");
+          return false;
+        }
+      }
+   
+    
+    </script>
+  </body>
+</html>
